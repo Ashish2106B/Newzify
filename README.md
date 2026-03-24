@@ -1,41 +1,56 @@
-# 🧙 MysticDex – Wizard Stats App
+# 📰 Newzify – Smart News Dashboard
 
 ## 📌 Project Idea
 
-MysticDex is a web application that displays Harry Potter characters in a visually engaging, game-like format. Here each character is shown with basic details and custom stats.
+Newzify is a web-based news application that displays real-time news articles in a clean and user-friendly interface. It allows users to browse, search, and filter news based on different categories.
 
 ---
 
 ## 🎯 Purpose
 
-The goal of this project is to learn how to use APIs and build an interactive frontend application.
+The purpose of this project is to learn how to integrate APIs and build a dynamic frontend application that displays real-time data.
 
 ---
 
 ## 🔗 API Used
 
-Potter API:
-https://potterapi-fedeperin.vercel.app/en/characters
+GNews API:
+https://gnews.io
 
-This API provides character data such as name, house, and images.
+This API provides:
+
+* Latest news headlines
+* News articles with images
+* Category-based filtering
 
 ---
 
 ## ✨ Planned Features
 
-* Search for characters
-* Display character details in card format
-* Show basic custom stats (Power, Magic, Intelligence, Defense)
-* Simple and clean UI
+* Display latest news articles
+* Search news by keywords
+* Filter news by categories (Technology, Business, Sports, etc.)
+* Show news in card format with image and description
 
 ---
 
-## 🛠️ Technologies
+## 🛠️ Technologies Used
 
 * HTML
 * CSS
 * JavaScript
 * Fetch API
 
+---
+
+## ⚙️ Setup & Run
+
+* Clone or download the project
+* Open `index.html` in a browser
+* Add your GNews API key in the JavaScript file
 
 ---
+
+## 👨‍💻 Author
+
+Your Name

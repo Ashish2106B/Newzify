@@ -43,14 +43,4 @@ This API provides:
 
 ---
 
-## ⚙️ Setup & Run
 
-* Clone or download the project
-* Open `index.html` in a browser
-* Add your GNews API key in the JavaScript file
-
----
-
-## 👨‍💻 Author
-
-Your Name

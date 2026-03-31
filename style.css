@@ -57,11 +57,51 @@ body {
     border-radius: 20%;
 }
 
+#newsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
 /* Loading */
 #loading {
     text-align: center;
     margin: 20px;
     font-size: 18px;
     color: #94a3b8;
+}
+
+.card {
+    background: #1e293b;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 10px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.03);
+}
+
+.card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.card h3 {
+    margin: 10px 0;
+}
+
+.card p {
+    font-size: 14px;
+    color: #94a3b8;
+}
+
+.card a {
+    display: block;
+    margin-top: 10px;
+    color: #38bdf8;
 }
 

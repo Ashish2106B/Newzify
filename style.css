@@ -24,7 +24,6 @@ body {
 
 /* Logo */
 .navbar h1 {
-    font-family: 'ZCOOL KuaiLe', cursive;
     font-size: 28px;
     letter-spacing: 2px;
     color: #38bdf8;
@@ -103,5 +102,26 @@ body {
     display: block;
     margin-top: 10px;
     color: #38bdf8;
+}
+
+
+/* LIGHT MODE */
+
+
+body.light {
+    background: #ffffff;
+    color: black;
+}
+
+body.light .navbar {
+    background: #e2e8f0;
+}
+
+body.light .card {
+    background: #f1f5f9;
+}
+
+body.light p {
+    color: #334155;
 }
 

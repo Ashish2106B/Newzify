@@ -13,7 +13,8 @@
     <div class="navbar">
         <h1>NEWZIFY</h1>
         <input type="text" id="search" placeholder="Search news...">
-        <button >Search</button>
+        <button onclick="searchNews()" >Search</button>
+        <button id="toggle" onclick="toggleMode()">Toggle Mode</button>
     </div>
 
     <div id="loading">Loading news...</div>
@@ -22,7 +23,8 @@
 
     <div id="newsContainer"></div>
 
+    <script src="/script.js"></script>
+
 </body>
 </html>
 
-<!-- onclick="searchNews()" -->

@@ -66,6 +66,8 @@ function searchNews(){
 }
 
 
-
+function toggleMode(){
+    document.body.classList.toggle("light")
+}
 
 

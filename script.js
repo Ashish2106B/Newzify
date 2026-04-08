@@ -1,5 +1,4 @@
 let articles = []
-
 let API_KEY = "9854af16b847e1da9ff7504a636c5a02"
 
 let URL = `https://gnews.io/api/v4/top-headlines?lang=en&token=${API_KEY}`
@@ -7,20 +6,25 @@ let URL = `https://gnews.io/api/v4/top-headlines?lang=en&token=${API_KEY}`
 let container = document.getElementById("newsContainer")
 let loading = document.getElementById("loading")
 
-loading.style.display = "block"
 
-fetch(URL)
-.then(res => res.json())
-.then(data => {
-    loading.style.display = "none"
+function fetchNews(url){
+    loading.style.display = "block"
 
-    articles = data.articles   
+    fetch(url)
+    .then(res => res.json())
+    .then(data => {
+        loading.style.display = "none"
 
-    showNews(articles)         
-})
-.catch(() => {
-    loading.innerText = "Failed to load news"
-})
+        articles = data.articles || []
+
+        showNews(articles)
+    })
+    .catch(() => {
+        loading.innerText = "Failed to load news"
+    })
+}
+
+fetchNews(URL)
 
 
 
@@ -43,31 +47,34 @@ function showNews(arr){
 }
 
 
-
 function searchNews(){
-    let query = document.getElementById("search").value
+    let query = document.getElementById("search").value.toLowerCase()
 
-    let url = `https://gnews.io/api/v4/search?q=${query}&lang=en&token=${API_KEY}`
-
-    loading.style.display = "block"
-
-    fetch(url)
-    .then(res => res.json())
-    .then(data => {
-        loading.style.display = "none"
-
-        articles = data.articles
-
+    if(query === ""){
         showNews(articles)
+        return
+    }
+
+    let filtered = articles.filter(a => {
+        let text = `${a.title} ${a.description}`.toLowerCase()
+        return text.includes(query)
     })
-    .catch(() => {
-        loading.innerText = "Failed to load news"
-    })
+
+    showNews(filtered)
+}
+
+
+function filterNews(category){
+    let url = `https://gnews.io/api/v4/top-headlines?topic=${category}&lang=en&token=${API_KEY}`
+    fetchNews(url)
+}
+
+
+function showAll(){
+    fetchNews(URL)
 }
 
 
 function toggleMode(){
     document.body.classList.toggle("light")
 }
-
-

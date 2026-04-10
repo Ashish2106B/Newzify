@@ -1,14 +1,13 @@
 let articles = []
 
-let API_KEY = "9854af16b847e1da9ff7504a636c5a02"
-
-let URL = `https://gnews.io/api/v4/top-headlines?lang=en&token=${API_KEY}`
-
 let container = document.getElementById("newsContainer")
 let loading = document.getElementById("loading")
 
 let currentPage = 1
 let itemsPerPage = 8
+
+let BASE_URL = "https://saurav.tech/NewsAPI/top-headlines/category/general/in.json"
+
 
 function fetchNews(url){
     loading.style.display = "block"
@@ -19,16 +18,17 @@ function fetchNews(url){
         loading.style.display = "none"
 
         articles = data.articles || []
-        currentPage = 1   
+        currentPage = 1
 
         showNews(articles)
     })
-    .catch(() => {
+    .catch(err => {
+        console.log(err)
         loading.innerText = "Failed to load news"
     })
 }
 
-fetchNews(URL)
+fetchNews(BASE_URL)
 
 
 function showNews(arr){
@@ -44,7 +44,7 @@ function showNews(arr){
         card.className = "card"
 
         card.innerHTML = `
-            <img src="${a.image || 'https://via.placeholder.com/300'}">
+            <img src="${a.urlToImage || 'https://via.placeholder.com/300'}">
             <h3>${a.title}</h3>
             <p>${a.description || ""}</p>
             <a href="${a.url}" target="_blank">Read More</a>
@@ -88,6 +88,8 @@ function renderPagination(totalItems){
 function searchNews(){
     let query = document.getElementById("search").value.toLowerCase()
 
+    currentPage = 1
+
     if(query === ""){
         showNews(articles)
         return
@@ -98,7 +100,6 @@ function searchNews(){
         return text.includes(query)
     })
 
-    currentPage = 1
     showNews(filtered)
 }
 
@@ -115,13 +116,13 @@ function debounceSearch(){
 
 
 function filterNews(category){
-    let url = `https://gnews.io/api/v4/top-headlines?topic=${category}&lang=en&token=${API_KEY}`
+    let url = `https://saurav.tech/NewsAPI/top-headlines/category/${category}/in.json`
     fetchNews(url)
 }
 
 
 function showAll(){
-    fetchNews(URL)
+    fetchNews(BASE_URL)
 }
 
 

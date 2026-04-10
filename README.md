@@ -2,27 +2,27 @@
 
 ## 📌 Project Overview
 
-Newzify is a responsive web application that displays real-time news using a public API. It allows users to explore, search, filter, and interact with news articles in a clean and modern interface.
+Newzify is a responsive web application that displays real-time news in a clean and interactive interface. It allows users to browse, search, filter, and sort news articles dynamically.
 
 ---
 
 ## 🎯 Objective
 
-To build an interactive frontend application that integrates real-time data from an API and enhances user experience with dynamic features.
+To build an interactive frontend application that integrates real-time data from a public API and enhances user experience with dynamic features.
 
 ---
 
 ## 🔗 API Used
 
-GNews API
-https://gnews.io
+News API (via public endpoint)
+https://saurav.tech/NewsAPI/
 
 This API provides:
 
 * Latest headlines
 * Category-based news
-* Search-based results
-* Article images and descriptions
+* Article images, titles, and descriptions
+* No API key required (suitable for frontend deployment)
 
 ---
 
@@ -31,8 +31,8 @@ This API provides:
 ### 🔹 Core Features
 
 * Fetch and display real-time news using `fetch()`
-* Dynamic rendering using DOM manipulation
-* Responsive design for mobile, tablet, and desktop
+* Dynamic DOM manipulation to render articles
+* Responsive design (mobile, tablet, desktop)
 * Loading indicator during API calls
 
 ---
@@ -41,22 +41,22 @@ This API provides:
 
 #### 🔍 Search
 
-* Search news by keywords
+* Search news using keywords
 * Implemented using `Array.filter()`
 
 #### 📂 Filtering
 
 * Filter news by categories (Technology, Sports, Business)
-* Uses API-based filtering
+* Fetches category-specific data dynamically
 
 #### 🔃 Sorting
 
 * Sort news alphabetically
 * Implemented using `Array.sort()`
 
-#### 🌙 Dark/Light Mode
+#### 🌙 Dark / Light Mode
 
-* Toggle between dark and light themes
+* Toggle between themes for better UX
 
 ---
 
@@ -69,8 +69,9 @@ This API provides:
 
 #### 📄 Pagination
 
-* Displays limited number of news per page
+* Displays 8 news cards per page
 * Implemented using `Array.slice()`
+* Includes Next / Previous navigation
 
 ---
 
@@ -80,19 +81,6 @@ This API provides:
 * CSS
 * JavaScript
 * Fetch API
-
----
-
-## ⚙️ Setup Instructions
-
-1. Clone or download the project
-2. Open `index.html` in a browser
-3. Add your GNews API key in `script.js`:
-
-   ```javascript
-   let API_KEY = "YOUR_API_KEY"
-   ```
-4. Run the project
 
 ---
 
@@ -108,11 +96,17 @@ The application is fully responsive and adapts to:
 
 ## 🧠 Learning Outcomes
 
-* Working with REST APIs
-* DOM manipulation
+* Working with APIs and JSON data
+* DOM manipulation and dynamic UI rendering
 * Using higher-order functions (`filter`, `sort`, `slice`)
-* Implementing UI interactivity
-* Handling asynchronous JavaScript
+* Implementing responsive design
+* Enhancing UX with debouncing and pagination
+
+---
+
+## 🚀 Deployment
+
+The project is deployed and accessible online.
 
 ---
 

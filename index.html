@@ -3,28 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Newzify</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=News+Cycle:wght@400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=News+Cycle:wght@400;700&family=Poppins&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="navbar">
         <h1>NEWZIFY</h1>
-        <input type="text" id="search" placeholder="Search news...">
-        <button onclick="searchNews()" >Search</button>
-        <button id="toggle" onclick="toggleMode()">Toggle Mode</button>
+
+        <input type="text" id="search" onkeyup="debounceSearch()" placeholder="Search news...">
+
+        <button onclick="sortNews()">Sort A-Z</button>
+
+        <div class="toggle-container" onclick="toggleMode()">
+            <div class="toggle-circle"></div>
+        </div>
+    </div>
+
+    <div class="filters">
+        <button onclick="filterNews('technology')">Tech</button>
+        <button onclick="filterNews('sports')">Sports</button>
+        <button onclick="filterNews('business')">Business</button>
+        <button onclick="showAll()">All</button>
     </div>
 
     <div id="loading">Loading news...</div>
 
-    <div id="trending"></div>
-
     <div id="newsContainer"></div>
 
-    <script src="/script.js"></script>
+    <div id="pagination"></div>
+
+    <script src="script.js"></script>
 
 </body>
 </html>
-

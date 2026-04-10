@@ -1,4 +1,5 @@
 let articles = []
+
 let API_KEY = "9854af16b847e1da9ff7504a636c5a02"
 
 let URL = `https://gnews.io/api/v4/top-headlines?lang=en&token=${API_KEY}`
@@ -6,6 +7,8 @@ let URL = `https://gnews.io/api/v4/top-headlines?lang=en&token=${API_KEY}`
 let container = document.getElementById("newsContainer")
 let loading = document.getElementById("loading")
 
+let currentPage = 1
+let itemsPerPage = 8
 
 function fetchNews(url){
     loading.style.display = "block"
@@ -16,6 +19,7 @@ function fetchNews(url){
         loading.style.display = "none"
 
         articles = data.articles || []
+        currentPage = 1   
 
         showNews(articles)
     })
@@ -27,11 +31,15 @@ function fetchNews(url){
 fetchNews(URL)
 
 
-
 function showNews(arr){
     container.innerHTML = ""
 
-    arr.forEach(a => {
+    let start = (currentPage - 1) * itemsPerPage
+    let end = start + itemsPerPage
+
+    let paginated = arr.slice(start, end)
+
+    paginated.forEach(a => {
         let card = document.createElement("div")
         card.className = "card"
 
@@ -44,6 +52,36 @@ function showNews(arr){
 
         container.appendChild(card)
     })
+
+    renderPagination(arr.length)
+}
+
+
+function renderPagination(totalItems){
+    let totalPages = Math.ceil(totalItems / itemsPerPage)
+
+    let pagination = document.getElementById("pagination")
+    pagination.innerHTML = ""
+
+    if(currentPage > 1){
+        let prev = document.createElement("button")
+        prev.innerText = "Prev"
+        prev.onclick = () => {
+            currentPage--
+            showNews(articles)
+        }
+        pagination.appendChild(prev)
+    }
+
+    if(currentPage < totalPages){
+        let next = document.createElement("button")
+        next.innerText = "Next"
+        next.onclick = () => {
+            currentPage++
+            showNews(articles)
+        }
+        pagination.appendChild(next)
+    }
 }
 
 
@@ -60,7 +98,19 @@ function searchNews(){
         return text.includes(query)
     })
 
+    currentPage = 1
     showNews(filtered)
+}
+
+
+let timer
+
+function debounceSearch(){
+    clearTimeout(timer)
+
+    timer = setTimeout(() => {
+        searchNews()
+    }, 500)
 }
 
 
@@ -72,6 +122,16 @@ function filterNews(category){
 
 function showAll(){
     fetchNews(URL)
+}
+
+
+function sortNews(){
+    let sorted = [...articles].sort((a, b) =>
+        a.title.localeCompare(b.title)
+    )
+
+    currentPage = 1
+    showNews(sorted)
 }
 
 
